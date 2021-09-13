@@ -236,6 +236,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -276,7 +277,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
 				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MODULE_VERSION = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -287,6 +287,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = x86_64;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -323,7 +324,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				KERNEL_EXTENSION_HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
 				KERNEL_FRAMEWORK_HEADERS = "$(PROJECT_DIR)/MacKernelSDK/Headers";
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				MODULE_VERSION = "";
 				SDKROOT = macosx;
 			};
@@ -335,7 +335,7 @@
 				ARCHS = x86_64;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = "$(MODULE_VERSION)";
+				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
 				GCC_ENABLE_KERNEL_DEVELOPMENT = NO;
@@ -354,11 +354,11 @@
 					"$(PROJECT_DIR)/MacKernelSDK/Library/x86_64",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				MARKETING_VERSION = "";
+				MARKETING_VERSION = 1.0.5;
 				MODULE_NAME = org.vanilla.driver.CpuTscSync;
 				MODULE_START = "$(PRODUCT_NAME)_kern_start";
 				MODULE_STOP = "$(PRODUCT_NAME)_kern_stop";
-				MODULE_VERSION = 1.0.4;
+				MODULE_VERSION = 1.0.5;
 				OTHER_CFLAGS = (
 					"-mmmx",
 					"-msse",
@@ -372,7 +372,7 @@
 					"-fno-asynchronous-unwind-tables",
 				);
 				OTHER_LDFLAGS = "-static";
-				PRODUCT_BUNDLE_IDENTIFIER = org.lvs1974.driver.CpuTscSync;
+				PRODUCT_BUNDLE_IDENTIFIER = as.Yaming.CpuTscSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = kext;
@@ -384,7 +384,7 @@
 			buildSettings = {
 				ARCHS = x86_64;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CURRENT_PROJECT_VERSION = "$(MODULE_VERSION)";
+				CURRENT_PROJECT_VERSION = 1.0.5;
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_POSTPROCESSING = YES;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
@@ -405,11 +405,11 @@
 				);
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				MARKETING_VERSION = "";
+				MARKETING_VERSION = 1.0.5;
 				MODULE_NAME = org.vanilla.driver.CpuTscSync;
 				MODULE_START = "$(PRODUCT_NAME)_kern_start";
 				MODULE_STOP = "$(PRODUCT_NAME)_kern_stop";
-				MODULE_VERSION = 1.0.4;
+				MODULE_VERSION = 1.0.5;
 				OTHER_CFLAGS = (
 					"-mmmx",
 					"-msse",
@@ -423,7 +423,7 @@
 					"-fno-asynchronous-unwind-tables",
 				);
 				OTHER_LDFLAGS = "-static";
-				PRODUCT_BUNDLE_IDENTIFIER = org.lvs1974.driver.CpuTscSync;
+				PRODUCT_BUNDLE_IDENTIFIER = as.Yaming.CpuTscSync;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				STRIP_STYLE = "non-global";
