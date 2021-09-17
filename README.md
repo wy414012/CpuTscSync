@@ -3,7 +3,8 @@
 
 It is a Lilu plugin, combining functionality of VoodooTSCSync and disabling xcpm_urgency if TSC is not in sync. It should solve some kernel panics after wake.
 
-**WARNING**: CPUs without `MSR_IA32_TSC_ADJUST` (03Bh) are currently unsupported on macOS 12 and newer.
+- **该库仅供自维护机型适用。目的稳定，而不是探究新方法诞生**
+- **克隆与1.03版本**
 
 #### Credits
 - [Apple](https://www.apple.com) for macOS  
