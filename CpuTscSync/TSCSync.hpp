@@ -1,6 +1,6 @@
-/*  Do what you want with this. 
- This work originates from the ideas of Turbo and the 
- frustrations of cosmo1t the dell owner.
+/*  用这个做你想做的。
+  这项工作源于 Turbo 和
+  戴尔所有者cosmo1t 。
  *
  */
 
@@ -10,16 +10,16 @@
 #include <IOKit/IOLib.h>
 #include <i386/proc_reg.h>
 
-//reg define
+//注册定义
 #define MSR_IA32_TSC                    0x00000010
 
-//extern function defined in mp.c from xnu
+//xnu 的 mp.c 中定义的 extern 函数
 extern "C" void  mp_rendezvous_no_intrs(void (*action_func)(void*), void *arg);
 
-class VoodooTSCSync : public IOService
+class TSCSync : public IOService
 {
     typedef IOService super;
-    OSDeclareDefaultStructors(VoodooTSCSync)
+    OSDeclareDefaultStructors(TSCSync)
 
 private:
 	static void doTSC(void);

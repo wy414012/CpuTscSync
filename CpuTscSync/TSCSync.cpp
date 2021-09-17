@@ -1,28 +1,28 @@
 #include <Headers/kern_util.hpp>
-#include "VoodooTSCSync.h"
+#include "TSCSync.hpp"
 
-OSDefineMetaClassAndStructors(VoodooTSCSync, IOService)
+OSDefineMetaClassAndStructors(TSCSync, IOService)
 
-_Atomic(bool) VoodooTSCSync::tsc_synced = false;
+_Atomic(bool) TSCSync::tsc_synced = false;
 
-//stamp the tsc
+//签名 tsc
 extern "C" void stamp_tsc(void *tscp)
 {
 	wrmsr64(MSR_IA32_TSC, *reinterpret_cast<uint64_t*>(tscp));
 }
 
-IOService* VoodooTSCSync::probe(IOService* provider, SInt32* score)
+IOService* TSCSync::probe(IOService* provider, SInt32* score)
 {
     if (!super::probe(provider, score)) return NULL;
     if (!provider) return NULL;
 
-    // only attach to last CPU
+    // 只连接到最后一个 CPU
     uint16_t threadCount = rdmsr64(MSR_CORE_THREAD_COUNT);
     OSNumber* cpuNumber = OSDynamicCast(OSNumber, provider->getProperty("IOCPUNumber"));
     if (!cpuNumber || cpuNumber->unsigned16BitValue() != threadCount-1)
         return NULL;
 
-    return this;
+    return this;/*执行*/
 }
 
 static IOPMPowerState powerStates[2] =
@@ -31,7 +31,7 @@ static IOPMPowerState powerStates[2] =
     { 1, kIOPMPowerOn, kIOPMPowerOn, kIOPMPowerOn, 0, 0, 0, 0, 0, 0, 0, 0 }
 };
 
-IOReturn VoodooTSCSync::setPowerState(unsigned long powerStateOrdinal, IOService *whatDevice )
+IOReturn TSCSync::setPowerState(unsigned long powerStateOrdinal, IOService *whatDevice )
 {
 	tsc_synced = false;
 
@@ -41,28 +41,28 @@ IOReturn VoodooTSCSync::setPowerState(unsigned long powerStateOrdinal, IOService
     return IOPMAckImplied;
 }
 
-void VoodooTSCSync::stop(IOService *provider)
+void TSCSync::stop(IOService *provider)
 {
     PMstop();
     super::stop(provider);
 }
 
-bool VoodooTSCSync::start(IOService *provider)
+bool TSCSync::start(IOService *provider)
 {
 	if (!super::start(provider)) { return false; }
 
-    // announce version
+    // 声明版本
     extern kmod_info_t kmod_info;
     SYSLOG("cputs", "Version %s starting on OS X Darwin %d.%d.\n", kmod_info.version, version_major, version_minor);
 
-    // place version/build info in ioreg properties RM,Build and RM,Version
+    // 将版本/构建信息放在 ioreg 属性 Build 和 Version
     char buf[128];
     snprintf(buf, sizeof(buf), "%s %s", kmod_info.name, kmod_info.version);
-    setProperty("RM,Version", buf);
+    setProperty("Version", buf);
 #ifdef DEBUG
-    setProperty("RM,Build", "Debug");
+    setProperty("Build", "Debug");
 #else
-    setProperty("RM,Build", "Release");
+    setProperty("Build", "Release");
 #endif
 
     PMinit();
@@ -71,13 +71,13 @@ bool VoodooTSCSync::start(IOService *provider)
 	return true;
 }
 
-// Update MSR on all processors.
-void VoodooTSCSync::doTSC()
+// 更新所有处理器的 MSR.
+void TSCSync::doTSC()
 {
 	uint64_t tsc = rdtsc64();
 	SYSLOG("cputs", "current tsc from rdtsc64() is %lld. Rendezvouing..\n", tsc);
 	
-	// call the kernel function that will call this "action" on all cores/processors
+	// 调用将在所有内核/处理器上调用此“操作”的内核函数
 	mp_rendezvous_no_intrs(stamp_tsc, &tsc);
 	tsc_synced = true;
 }

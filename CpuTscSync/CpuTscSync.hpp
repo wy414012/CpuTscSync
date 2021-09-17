@@ -2,7 +2,7 @@
 //  CpuTscSync.hpp
 //  CpuTscSync
 //
-//  Copyright © 2020 lvs1974. All rights reserved.
+//  版权所有 © 2020 lvs1974。 版权所有。
 //
 
 #ifndef kern_cputs_hpp
@@ -19,19 +19,19 @@ public:
 
 private:
 	/**
-	 *  Trampolines for original resource load callback
+	 *  原始资源加载回调的蹦床
 	 */
 	mach_vm_address_t org_xcpm_urgency             {0};
 	
 	/**
-	 *  Hooked functions
+	 *  挂钩函数
 	 */
 	static void xcpm_urgency(int urgency, uint64_t rt_period, uint64_t rt_deadline);
 	
 	/**
-	 *  Patch kernel
+	 *  内核补丁
 	 *
-	 *  @param patcher KernelPatcher instance
+	 *  @参数 patcher KernelPatcher 实例
 	 */
 	void processKernel(KernelPatcher &patcher);
 };

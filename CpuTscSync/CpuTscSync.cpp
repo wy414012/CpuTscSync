@@ -2,13 +2,13 @@
 //  CpuTscSync.cpp
 //  CpuTscSync
 //
-//  Copyright © 2020 lvs1974. All rights reserved.
+//  版权所有 © 2020 lvs1974。
 //
 
 #include <Headers/kern_api.hpp>
 
 #include "CpuTscSync.hpp"
-#include "VoodooTSCSync.h"
+#include "TSCSync.hpp"
 
 static CpuTscSyncPlugin *callbackCpuf = nullptr;
 
@@ -24,9 +24,9 @@ void CpuTscSyncPlugin::init()
 
 void CpuTscSyncPlugin::xcpm_urgency(int urgency, uint64_t rt_period, uint64_t rt_deadline)
 {
-	if (!VoodooTSCSync::isTscSynced())
+	if (!TSCSync::isTscSynced())
 	{
-		SYSLOG("cputs", "xcpm_urgency is called when TSC presumably is not in sync, sync it");
+		SYSLOG("cputs", "当 TSC 可能不同步时调用 xcpm_urgency，同步它");
         return;
 	}
 	
@@ -43,6 +43,6 @@ void CpuTscSyncPlugin::processKernel(KernelPatcher &patcher)
 		kernel_routed = true;
 	}
 
-	// Ignore all the errors for other processors
+	// 忽略其他处理器的所有错误
 	patcher.clearError();
 }

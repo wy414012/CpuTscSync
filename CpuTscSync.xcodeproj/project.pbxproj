@@ -12,8 +12,8 @@
 		CEBD8C191F372A4600BBCB85 /* CpuTscSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEBD8C171F372A4600BBCB85 /* CpuTscSync.cpp */; };
 		CEBD8C1A1F372A4600BBCB85 /* CpuTscSync.hpp in Headers */ = {isa = PBXBuildFile; fileRef = CEBD8C181F372A4600BBCB85 /* CpuTscSync.hpp */; };
 		F6419886251A33AA00426196 /* libkmod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6419885251A33AA00426196 /* libkmod.a */; };
-		F659CFA424116C2C00E5B656 /* VoodooTSCSync.h in Headers */ = {isa = PBXBuildFile; fileRef = F659CFA224116C2C00E5B656 /* VoodooTSCSync.h */; };
-		F659CFA524116C2C00E5B656 /* VoodooTSCSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F659CFA324116C2C00E5B656 /* VoodooTSCSync.cpp */; };
+		F659CFA424116C2C00E5B656 /* TSCSync.hpp in Headers */ = {isa = PBXBuildFile; fileRef = F659CFA224116C2C00E5B656 /* TSCSync.hpp */; };
+		F659CFA524116C2C00E5B656 /* TSCSync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F659CFA324116C2C00E5B656 /* TSCSync.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +39,8 @@
 		CEBD8C171F372A4600BBCB85 /* CpuTscSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CpuTscSync.cpp; sourceTree = "<group>"; };
 		CEBD8C181F372A4600BBCB85 /* CpuTscSync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CpuTscSync.hpp; sourceTree = "<group>"; };
 		F6419885251A33AA00426196 /* libkmod.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkmod.a; path = MacKernelSDK/Library/x86_64/libkmod.a; sourceTree = SOURCE_ROOT; };
-		F659CFA224116C2C00E5B656 /* VoodooTSCSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoodooTSCSync.h; sourceTree = "<group>"; };
-		F659CFA324116C2C00E5B656 /* VoodooTSCSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VoodooTSCSync.cpp; sourceTree = "<group>"; };
+		F659CFA224116C2C00E5B656 /* TSCSync.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TSCSync.hpp; sourceTree = "<group>"; };
+		F659CFA324116C2C00E5B656 /* TSCSync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TSCSync.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +76,8 @@
 		1C748C291C21952C0024EED2 /* CpuTscSync */ = {
 			isa = PBXGroup;
 			children = (
-				F659CFA324116C2C00E5B656 /* VoodooTSCSync.cpp */,
-				F659CFA224116C2C00E5B656 /* VoodooTSCSync.h */,
+				F659CFA324116C2C00E5B656 /* TSCSync.cpp */,
+				F659CFA224116C2C00E5B656 /* TSCSync.hpp */,
 				CEBD8C181F372A4600BBCB85 /* CpuTscSync.hpp */,
 				CEBD8C171F372A4600BBCB85 /* CpuTscSync.cpp */,
 				1C748C2C1C21952C0024EED2 /* kern_start.cpp */,
@@ -142,7 +142,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F659CFA424116C2C00E5B656 /* VoodooTSCSync.h in Headers */,
+				F659CFA424116C2C00E5B656 /* TSCSync.hpp in Headers */,
 				CEBD8C1A1F372A4600BBCB85 /* CpuTscSync.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,7 +225,7 @@
 				CEBD8C191F372A4600BBCB85 /* CpuTscSync.cpp in Sources */,
 				CE5FC76325225E64006573DB /* plugin_start.cpp in Sources */,
 				1C748C2D1C21952C0024EED2 /* kern_start.cpp in Sources */,
-				F659CFA524116C2C00E5B656 /* VoodooTSCSync.cpp in Sources */,
+				F659CFA524116C2C00E5B656 /* TSCSync.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

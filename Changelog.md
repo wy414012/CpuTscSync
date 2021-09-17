@@ -1,5 +1,9 @@
 CpuTscSync Changelog
 ===================
+### v1.05
+- 将包名正式更改
+- 添加中文注释
+- 规范文件名
 
 ### v1.04
 - 分支重构解决之前版本的兼容问题
@@ -7,7 +11,7 @@ CpuTscSync Changelog
 - 测试了在低于6核心12线程的CPU上 macOS12 工作良好
 
 
-#### v1.0.4
+#### 原始v1.0.4
 - Added constants for macOS 12 support
 - Added macOS 12 compatibility for CPUs with `MSR_IA32_TSC_ADJUST` (03Bh)
 
