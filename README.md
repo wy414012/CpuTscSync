@@ -1,10 +1,19 @@
 # CpuTscSync
-[![Build Status](https://github.com/acidanthera/CpuTscSync/workflows/CI/badge.svg?branch=master)](https://github.com/acidanthera/CpuTscSync/actions) [![Scan Status](https://scan.coverity.com/projects/22194/badge.svg?flat=1)](https://scan.coverity.com/projects/22194)
 
-It is a Lilu plugin, combining functionality of VoodooTSCSync and disabling xcpm_urgency if TSC is not in sync. It should solve some kernel panics after wake.
-
-- **该库仅供自维护机型适用。目的稳定，而不是探究新方法诞生**
-- **克隆与1.03版本**
+- **该库仅供自维护机型使用，追求稳定，而不是探究新方法诞生**
+- **非主分支模式**
+- **克隆于1.03版本**
+- **移除了CI 构建 已保证稳定不损坏兼容性前提，合理推进在新系统中的兼容**
+- **不对测试版系统进行深入的支持与探索。**
+- **对构建包名进行了与团队版本的区分，修改为`as.Yaming.CpuTscSync`**
+## 注意 ！！！
+- 只想追求方法而不是稳定运行的这里不适合你
+- 只是为了追求新方法的也不适合你
+- 已有代码能解决的问题，这里绝对不会去写新的代码！！！
+## warn! ! !
+- **I just want to pursue a method instead of stable operation. This is not for you.**
+- **Just for pursuing new methods is not suitable for you.**
+- **Problems that can be solved with existing code. Never write new code.! ! !**
 
 #### Credits
 - [Apple](https://www.apple.com) for macOS  
