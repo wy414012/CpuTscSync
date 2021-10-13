@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    name: build
+    name: 使用Xcode13.0构建
     runs-on: macos-11
     env:
       JOB_TYPE: BUILD
@@ -32,18 +32,11 @@ jobs:
       - run: xcodebuild -jobs 1 -configuration Debug
       - run: xcodebuild -jobs 1 -configuration Release
 
-      - name: Upload to Artifacts
+      - name: 打包上传工作件
         uses: actions/upload-artifact@v2
         with:
-          name: Artifacts
+          name: CpuTSync-build
           path: build/*/*.zip
-      - name: Upload to Release
-        if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@e74ff71f7d8a4c4745b560a485cc5fdb9b5b999d
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/*/*.zip
-          tag: ${{ github.ref }}
-          file_glob: true
+
 
 
