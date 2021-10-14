@@ -38,7 +38,8 @@ jobs:
           name: CpuTSync-build
           path: build/*/*.zip
 		  
-- name: Create Release
+		  
+      - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -48,7 +49,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-      - name: Upload Release Asset
+       - name: Upload Release Asset
         id: upload-release-asset 
         uses: actions/upload-release-asset@v1
         env:
