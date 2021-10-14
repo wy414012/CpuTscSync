@@ -37,8 +37,8 @@ jobs:
         with:
           name: CpuTSync-build
           path: build/*/*.zip
-
- - name: Create Release
+		  
+- name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
