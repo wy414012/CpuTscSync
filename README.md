@@ -12,7 +12,7 @@
 ## 手动构建说明
 - 克隆仓库`git clone https://github.com/wy414012/CpuTscSync.git`
 - 进入代码库`cd CpuTscSync`
-- 克隆SDK`git clone https://github.com/acidanthera/MacKernelSDK.git`
+- 克隆SDK`git clone https://github.com/wy414012/MacKernelSDK.git`
 - 放入Lilu_Debug_版本
 - `xcodebuild -jobs 1 -configuration Debug`构建测试版本
 - `xcodebuild -jobs 1 -configuration Release`构建稳定版
