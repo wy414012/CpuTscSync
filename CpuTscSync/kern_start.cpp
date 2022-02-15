@@ -13,30 +13,30 @@
 static CpuTscSyncPlugin cpuf;
 
 static const char *bootargOff[] {
-	"-cputsoff"
+    "-cputsoff"
 };
 
 static const char *bootargDebug[] {
-	"-cputsdbg"
+    "-cputsdbg"
 };
 
 static const char *bootargBeta[] {
-	"-cputsbeta"
+    "-cputsbeta"
 };
 
 PluginConfiguration ADDPR(config) {
-	xStringify(PRODUCT_NAME),
-	parseModuleVersion(xStringify(MODULE_VERSION)),
-	LiluAPI::AllowNormal | LiluAPI::AllowInstallerRecovery | LiluAPI::AllowSafeMode,
-	bootargOff,
-	arrsize(bootargOff),
-	bootargDebug,
-	arrsize(bootargDebug),
-	bootargBeta,
-	arrsize(bootargBeta),
-	KernelVersion::MountainLion,
-	KernelVersion::Monterey,
-	[]() {
-		cpuf.init();
-	}
+    xStringify(PRODUCT_NAME),
+    parseModuleVersion(xStringify(MODULE_VERSION)),
+    LiluAPI::AllowNormal | LiluAPI::AllowInstallerRecovery | LiluAPI::AllowSafeMode,
+    bootargOff,
+    arrsize(bootargOff),
+    bootargDebug,
+    arrsize(bootargDebug),
+    bootargBeta,
+    arrsize(bootargBeta),
+    KernelVersion::MountainLion,
+    KernelVersion::Monterey,
+    []() {
+        cpuf.init();
+    }
 };

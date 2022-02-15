@@ -4,34 +4,57 @@
  *
  */
 
-#include <stdatomic.h>
-
 #include <IOKit/IOService.h>
-#include <IOKit/IOLib.h>
-#include <i386/proc_reg.h>
-
-//注册定义
-#define MSR_IA32_TSC                    0x00000010
-
-//xnu 的 mp.c 中定义的 extern 函数
-extern "C" void  mp_rendezvous_no_intrs(void (*action_func)(void*), void *arg);
+#include <IOKit/pwr_mgt/IOPMPowerSource.h>
 
 class TSCSync : public IOService
 {
     typedef IOService super;
     OSDeclareDefaultStructors(TSCSync)
 
-private:
-	static void doTSC(void);
+    /**
+     *  Power state name indexes
+     */
+    enum PowerState {
+        PowerStateOff,
+        PowerStateOn,
+        PowerStateMax
+    };
+
+    /**
+     *  Power states we monitor
+     */
+    IOPMPowerState powerStates[PowerStateMax]  {
+        {kIOPMPowerStateVersion1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {kIOPMPowerStateVersion1, kIOPMPowerOn | kIOPMDeviceUsable, kIOPMPowerOn, kIOPMPowerOn, 0, 0, 0, 0, 0, 0, 0, 0}
+    };
 
 public:
-    static bool isTscSynced() { return tsc_synced; };
-
+    /**
+     *  Decide on whether to load or not by checking the processor compatibility.
+     *
+     *  @param provider  parent IOService object
+     *  @param score     probing score
+     *
+     *  @return self if we could load anyhow
+     */
     virtual IOService* probe(IOService* provider, SInt32* score) override;
-    virtual bool start(IOService* provider) override;
-    virtual void stop(IOService* provider) override;
-    virtual IOReturn setPowerState(unsigned long powerStateOrdinal, IOService* whatDevice) override;
     
-protected:
-    static _Atomic(bool) tsc_synced;
+    /**
+     *  Add VirtualSMC listening notification.
+     *
+     *  @param provider  parent IOService object
+     *
+     *  @return true on success
+     */
+    bool start(IOService *provider) override;
+    
+    /**
+     *  Update power state with the new one, here we catch sleep/wake/boot/shutdown calls
+     *  New power state could be the reason for keystore to be saved to NVRAM, for example
+     *
+     *  @param state      power state index (must be below PowerStateMax)
+     *  @param whatDevice power state device
+     */
+    IOReturn setPowerState(unsigned long state, IOService *whatDevice) override;
 };
