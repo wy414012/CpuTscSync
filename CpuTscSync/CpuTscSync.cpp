@@ -54,14 +54,14 @@ void CpuTscSyncPlugin::reset_tsc_adjust(void *)
 
 void CpuTscSyncPlugin::tsc_adjust_or_reset()
 {
-    if (getKernelVersion() >= KernelVersion::Monterey) {
-        DBGLOG("cputs", "reset tsc adjust");
-        mp_rendezvous_no_intrs(reset_tsc_adjust, NULL);
-    } else {
+    if (getKernelVersion() <= KernelVersion::Monterey) {
         uint64_t tsc = rdtsc64();
         DBGLOG("cputs", "current tsc from rdtsc64() is %lld. Rendezvouing..", tsc);
         // call the kernel function that will call this "action" on all cores/processors
         mp_rendezvous_no_intrs(stamp_tsc, &tsc);
+    } else {
+        DBGLOG("cputs", "reset tsc adjust");
+        mp_rendezvous_no_intrs(reset_tsc_adjust, NULL);
     }
     tsc_synced = true;
 }
