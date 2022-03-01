@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleGetInfoString</key>
+	<string>${MODULE_VERSION}, Copyright © 2009 Cosmo1t, 2018 RehabMan. GPLv2.</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>KEXT</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>IOKitPersonalities</key>
+	<dict>
+		<key>CpuTSCSync</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>${MODULE_NAME}</string>
+			<key>IOClass</key>
+			<string>${PRODUCT_NAME}</string>
+			<key>IOMatchCategory</key>
+			<string>${PRODUCT_NAME}</string>
+			<key>IOProviderClass</key>
+			<string>AppleACPICPU</string>
+		</dict>
+	</dict>
+	<key>OSBundleLibraries</key>
+	<dict>
+		<key>com.apple.kpi.iokit</key>
+		<string>7.0</string>
+		<key>com.apple.kpi.libkern</key>
+		<string>8.0d0</string>
+		<key>com.apple.kpi.unsupported</key>
+		<string>8.0b1</string>
+	</dict>
+	<key>OSBundleRequired</key>
+	<string>Root</string>
+	<key>Source Code</key>
+	<string>https://github.com/wy414012/CpuTscSync</string>
+</dict>
+</plist>

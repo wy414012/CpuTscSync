@@ -9,33 +9,27 @@ on:
 
 env:
   PROJECT_TYPE: KEXT
+  ACID32: 1
 
 jobs:
   build:
-    name: 使用Xcode13.0构建
+    name: 开始自动构建检查使用xcode13.2
     runs-on: macos-11
     env:
       JOB_TYPE: BUILD
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-        with:
-          repository: wy414012/MacKernelSDK
-          path: MacKernelSDK
       - name: CI Bootstrap
         run: |
           src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/wy414012/ocbuild/Yaming/ci-bootstrap.sh) && eval "$src" || exit 1
-      - name: Lilu Bootstrap
-        run: |
-          src=$(/usr/bin/curl -Lfs https://raw.githubusercontent.com/wy414012/Lilu/yaming-network/Lilu/Scripts/bootstrap.sh) && eval "$src" || exit 1
 
       - run: xcodebuild -jobs 1 -configuration Debug
       - run: xcodebuild -jobs 1 -configuration Release
 
-      - name: 打包上传工作件
+      - name: 打包临时工件
         uses: actions/upload-artifact@v2
         with:
-          name: CpuTSync-build
+          name: CpuTsync-build
           path: build/*/*.zip
       - name: 上传发布版本
         if: github.event_name == 'release'
