@@ -1,5 +1,9 @@
 CpuTscSync Changelog
 ===================
+### v1.5.3
+- 格式化代码缩进，使其更易于阅读和理解；
+- 使用`nullptr`替代`NULL`，`nullptr`是`C++11`中引入的新关键字，作为新的空指针常量，好处是类型安全；
+- 使用强制类型转换`static_cast`替代`reinterpret_cast`，`static_cast`在类型转换时进行类型检查，更加安全。
 ### v1.5.1
 - 将`VoodooTSCSync驱动重构到该库`适配兼容性
 
