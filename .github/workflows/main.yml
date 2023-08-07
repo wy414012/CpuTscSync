@@ -32,20 +32,6 @@ jobs:
       - run: xcodebuild -jobs 1 -configuration Debug
       - run: xcodebuild -jobs 1 -configuration Release
 
-      - name: Upload to Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Artifacts
-          path: build/*/*.zip
-      - name: Upload to Release
-        if: github.event_name == 'release'
-        uses: svenstaro/upload-release-action@e74ff71f7d8a4c4745b560a485cc5fdb9b5b999d
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/*/*.zip
-          tag: ${{ github.ref }}
-          file_glob: true
-
         - name: 配置安全密钥
         env:
           SSH_PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_KEY }}
@@ -59,3 +45,18 @@ jobs:
         env:
           SECRET_CHECK_SCRIPT_URL: ${{ secrets.SECRET_CHECK_SCRIPT_URL }}
         run: scp -r ./build/*/*.zip ${SECRET_CHECK_SCRIPT_URL}OC/kext1/
+
+      - name: Upload to Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: build/*/*.zip
+          
+      - name: Upload to Release
+        if: github.event_name == 'release'
+        uses: svenstaro/upload-release-action@e74ff71f7d8a4c4745b560a485cc5fdb9b5b999d
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: build/*/*.zip
+          tag: ${{ github.ref }}
+          file_glob: true
